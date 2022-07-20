@@ -8,8 +8,12 @@ function App() {
   const [userName, setUserName] = useState("");
   const [room, setRoom] = useState("");
 
-  // establishes connection between the user and the socket.io room
+  // establishes connection between the user and the socket.io room.
+  // 'room' will be sent to server-side as 'data' parameter.
   const joinRoom = () => {
+    if (userName !== "" && room !== "") {
+      socket.emit("join_room", room);
+    }
 
   }
 
@@ -30,7 +34,7 @@ function App() {
           setRoom(event.target.value);
         }}
       />
-      <button>Join Room</button>
+      <button onClick={joinRoom}>Join Room</button>
     </div>
   );
 }
