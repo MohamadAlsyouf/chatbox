@@ -17,17 +17,16 @@ function App() {
       socket.emit("join_room", room);
       setShowChat(true);
     }
-
-  }
+  };
 
   return (
     <div className="App">
       {!showChat ? (
         <div className="joinChatContainer">
-          <h3>Join Chat</h3>
+          <h3>Ezoic Chat</h3>
           <input
             type="text"
-            placeholder="John..."
+            placeholder="Name..."
             onChange={(event) => {
               setUserName(event.target.value);
             }}
@@ -38,6 +37,9 @@ function App() {
             onChange={(event) => {
               setRoom(event.target.value);
             }}
+            onKeyDown={(event) => {
+            event.key === "Enter" && joinRoom();
+          }}
           />
           <button onClick={joinRoom}>Join Room</button>
         </div>
@@ -47,6 +49,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
