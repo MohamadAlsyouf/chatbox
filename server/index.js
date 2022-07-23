@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
+// global http import to build our server w socket.io
 const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 
+// cors middleware
 app.use(cors());
 
 const server = http.createServer(app);
 
+// new socket.io Server instance connecting to our server
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -15,6 +18,7 @@ const io = new Server(server, {
   },
 });
 
+// listening for connection to socket.io server
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
@@ -23,8 +27,10 @@ io.on("connection", (socket) => {
     console.log(`User with ID: ${socket.id} joined room: ${data}`);
     console.log("data: ", data);
   });
-  // whenever someone types a message (in Chat.js), they emit the send message event and
-  // send the data here, then this will emit the message sent to everyone listening for message
+
+
+  // when someone types a message (in Chat.js), they emit the send message event and
+  // send data here, this will emit the message sent to everyone listening for message (in the room)
   socket.on("send_message", (data) => {
     socket.to(data.room).emit("receive_message", data);
     console.log("AUTHOR: ", data.author);
