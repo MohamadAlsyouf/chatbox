@@ -15,7 +15,7 @@ A full stack chat application for users who want to send and receive realtime me
 ## Features
 
 - Users can enter name and room number to get started
-- Users can share designated room number with other users
+- Users can join a shared chat room
 - Users can send and recieve realtime messages
 - Users can view the author and exact time of each message sent
 
