@@ -1,9 +1,8 @@
 # ChatBox
 
-A full stack chat application for users who want to send and receive realtime messages in a designated chatroom. This application was developed using JavaScript, React on the frontend and Node.js, Express.js, alongside Socket.io on the backend.
+A full stack chat application for users who want to send and receive realtime messages in a designated chatroom. This application was developed using JavaScript, React on the frontend and Node.js, Express.js, alongside Socket.io on the backend. 
 
 ## Technologies Used 🛠️
-
 - React
 - JavaScript
 - HTML5
@@ -21,7 +20,6 @@ A full stack chat application for users who want to send and receive realtime me
 
 ## Preview
 ![chatbox gif](https://user-images.githubusercontent.com/93749120/183564480-fee1b2a7-9c55-46fd-b4b0-ff057d53db1c.gif)
-
 
 
 ## Stretch features I'd like to implement
