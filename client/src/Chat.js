@@ -4,8 +4,6 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 function Chat({socket, userName, room}) {
   const [currentMessage, setCurrentMessage] = useState("")
   const [messageList, setMessageList] = useState([]);
-  const [color, setColor] = useState('');
-  const [counter, setCounter] = useState(0);
 
   // this is async so that we wait for the message to be sent before sending currentMessage
   const sendMessage = async () => {
@@ -22,8 +20,8 @@ function Chat({socket, userName, room}) {
       console.log(messageData.time);
       console.log(messageData);
       await socket.emit("send_message", messageData)
-      // line 23 sets messageList not only when we receive
-      // a message(31), but when we send a message as well.
+      // line 25 sets messageList not only when we receive
+      // a message, but when we send a message as well.
       setMessageList((list) => [...list, messageData])
       console.log("MESSAGE LIST: ", messageList);
       setCurrentMessage("");
@@ -38,41 +36,19 @@ function Chat({socket, userName, room}) {
     })
   }, [socket])
 
-  // THIS WORKS KINDA, I NEED TO MAKE A STYLE OBJECT VARIABLE AND CHANGE IT
-  // DEPENDING ON WHAT COUNTER IS. THEN, CONDITIONALLY CHANGE 'STYLE' IN THIS USEEFFECT
-  // AND INSTEAD OF CLASSNAME AND ID, JUST USE STYLE PROP AND SET = TO STYLE
-      // maybe even have style as a state variable initialized as an object
-  useEffect(() => {
-    setCounter(counter + 1);
-    console.log(counter);
-    if (counter < 1) {
-      return;
-    } else if (counter === 1) {
-      console.log("first user");
-      setColor('other');
-    } else if (counter === 2) {
-      console.log("second user");
-      setColor('you');
-    } else {
-      console.log("third user")
-      setColor('third');
-    }
-  }, [messageList])
-
   return (
     <div className="chat-wrapper">
       <div className="chat-window">
         <div className="chat-header">
-          <p>ezoic chat</p>
+          <p>ChatBox</p>
         </div>
         <div className="chat-body">
           <ScrollToBottom className="message-container">
             {messageList.map((messageContent, index) => {
-              // console.log(counter);
               return (
               <div
                 className="message"
-                id={color}
+                id={userName === messageContent.author ? "other" : "you"}
                 key={index}
               >
                 <div>

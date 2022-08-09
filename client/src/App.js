@@ -18,9 +18,7 @@ function App() {
     if (userName !== "" && room !== "") {
       socket.emit("join_room", room);
       socket.emit("get_users", userName)
-
       console.log("userName: ", userName)
-
       setShowChat(true);
     }
   };
@@ -30,7 +28,9 @@ function App() {
       {!showChat ? (
         <div className="home-wrapper">
           <div className="joinChatContainer">
-          <h3>ezoic chat</h3>
+          <h3>ChatBox</h3>
+          <p>Enter Name and share Room ID < br/> to begin!
+          </p>
           <input
             type="text"
             placeholder="Name..."

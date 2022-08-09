@@ -28,7 +28,6 @@ io.on("connection", (socket) => {
     console.log("data: ", data);
   });
 
-
   // when someone types a message (in Chat.js), they emit the send message event and
   // send data here, this will emit the message sent to everyone listening for message (in the room)
   socket.on("send_message", (data) => {
