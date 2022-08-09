@@ -20,13 +20,14 @@ A full stack chat application for users who want to send and receive realtime me
 - Users can view the author and exact time of each message sent
 
 ## Preview
+![chatbox gif](https://user-images.githubusercontent.com/93749120/183564480-fee1b2a7-9c55-46fd-b4b0-ff057d53db1c.gif)
 
-coming soon...
+
 
 ## Stretch features I'd like to implement
 
-- Users can send images in the chat room
 - Users can join a room with more than two users to make group chats
+- Users can send images in the chat room
 - Users can react to certain messages (like, dislike)
 
 ## Development :building_construction:
